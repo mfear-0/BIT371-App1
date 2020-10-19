@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button myButton = (Button) findViewById(R.id.button);
+        //Button myButton = (Button) findViewById(R.id.button);
     }
 
-    public void goToActivity(View view){
+/*    public void goToActivity(View view){
         EditText user = findViewById(R.id.ptxt1);
         EditText pass = findViewById(R.id.ptxt2);
         String userin = user.getText().toString();
@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i("INFO", "Moving to confirmation...");
         startActivity(intent);
 
-    }
+    }*/
 
 }
