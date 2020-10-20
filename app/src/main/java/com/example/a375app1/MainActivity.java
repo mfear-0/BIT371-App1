@@ -1,41 +1,41 @@
 package com.example.a375app1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private ArrayList<Contact> contacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Button myButton = (Button) findViewById(R.id.button);
+        // Lookup the recyclerview in activity layout
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
+        // Initialize contacts
+        contacts = Contact.createContactsList(20);
+        // Create adapter passing in the sample user data
+        ContactAdapter adapter = new ContactAdapter(contacts);
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
-
-/*    public void goToActivity(View view){
-        EditText user = findViewById(R.id.ptxt1);
-        EditText pass = findViewById(R.id.ptxt2);
-        String userin = user.getText().toString();
-        String passin = pass.getText().toString();
-        Log.i("INFO", "Username is " + userin);
-        Log.i("INFO", "Username is " + passin);
-
-        Intent intent = new Intent(getApplicationContext(), Activity2.class);
-        intent.putExtra("Username:", userin);
-        intent.putExtra("Password:", passin);
-        Log.i("INFO", "Moving to confirmation...");
-        startActivity(intent);
-
-    }*/
-
 }
